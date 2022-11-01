@@ -1,0 +1,38 @@
+{
+	"name": "@somethings/logger",
+	"version": "0.0.1",
+	"description": "Logging tools.",
+	"keywords": [],
+	"author": {
+		"name": "Anton Galtsev",
+		"email": "avgaltsev@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/avgaltsev/logger"
+	},
+	"license": "MIT",
+	"type": "commonjs",
+	"directories": {
+		"lib": "./lib/"
+	},
+	"exports": {
+		".": "./lib/index.js"
+	},
+	"main": "./lib/index.js",
+	"devDependencies": {
+		"@somethings/eslint-config-base": "^7.0.1",
+		"@somethings/eslint-config-typescript": "^4.0.1",
+		"@types/node": "^18.11.8",
+		"@typescript-eslint/eslint-plugin": "^5.42.0",
+		"@typescript-eslint/parser": "^5.42.0",
+		"eslint": "^8.26.0",
+		"typescript": "^4.8.4"
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"build": "tsc --skipLibCheck",
+		"watch": "tsc --skipLibCheck --watch",
+		"prepare": "npm run build && npm run lint"
+	}
+}
