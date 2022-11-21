@@ -25,7 +25,28 @@ type MethodDecorator = (target: unknown, name: string, descriptor: PropertyDescr
 
 export function log(level: number, ...messages: Array<unknown>): void {
 	if (level <= LOG_LEVEL) {
-		console.log(new Date(), ...messages);
+		const primitiveMessages = messages.map((message) => {
+			if (
+				message === null ||
+				message === undefined ||
+				typeof message === "number" ||
+				typeof message === "boolean"
+			) {
+				return message;
+			}
+
+			if (typeof message === "string") {
+				return message.replace(/\n/g, "\\n");
+			}
+
+			try {
+				return JSON.stringify(message);
+			} catch (error) {
+				return message.toString().replace(/\n/g, "\\n");
+			}
+		});
+
+		console.log(new Date(), ...primitiveMessages);
 	}
 }
 
